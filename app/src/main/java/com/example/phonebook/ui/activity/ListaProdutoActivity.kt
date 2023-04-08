@@ -4,9 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.example.phonebook.R
+import com.example.phonebook.recyclerview.adapter.ListaProdutoAdapter
 
 class ListaProdutoActivity : Activity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,11 @@ class ListaProdutoActivity : Activity() {
     private fun configFormularioProduto() {
         val intent = Intent(this, FormularioProdutoActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun configRecyclerView() {
+        val recyclerView = findViewById<RecyclerView>(R.id.activity_lista_produto_recyclerview)
+        recyclerView.adapter
     }
 
 }
