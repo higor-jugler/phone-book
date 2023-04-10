@@ -4,17 +4,25 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phonebook.R
+import com.example.phonebook.dao.ProdutoDao
 import com.example.phonebook.recyclerview.adapter.ListaProdutoAdapter
 
-class ListaProdutoActivity : Activity() {
+class ListaProdutoActivity : AppCompatActivity(R.layout.activity_lista_produtos) {
 
+    private val dao = ProdutoDao()
+    private val adapter = ListaProdutoAdapter(this, dao.buscaTodos())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lista_produtos)
+        configRecyclerView()
         configFab()
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     private fun configFab() {
@@ -31,7 +39,6 @@ class ListaProdutoActivity : Activity() {
 
     private fun configRecyclerView() {
         val recyclerView = findViewById<RecyclerView>(R.id.activity_lista_produto_recyclerview)
-        recyclerView.adapter
+        recyclerView.adapter = adapter
     }
-
 }
