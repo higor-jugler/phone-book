@@ -51,4 +51,10 @@ class ListaProdutoAdapter(
     Retorna o número total de itens na lista.
      */
     override fun getItemCount(): Int = produto.size
+
+    fun update(produto: List<Produto>) {
+        this.produto.clear()
+        this.produto.addAll(produto)
+        notifyDataSetChanged()
+    }
 }

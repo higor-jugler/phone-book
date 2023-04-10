@@ -23,6 +23,7 @@ class ListaProdutoActivity : AppCompatActivity(R.layout.activity_lista_produtos)
 
     override fun onResume() {
         super.onResume()
+        adapter.update(dao.buscaTodos())
     }
 
     private fun configFab() {
